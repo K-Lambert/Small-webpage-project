@@ -1,0 +1,41 @@
+{% extends "AppOne/menu_teacher.html"%}
+
+{% block titlevalue %} 
+    Student marks
+{% endblock %}
+
+{% block bodyblock %}
+<article>
+    <h1> Grades of: {{ student.first_name }} {{ student.last_name }}</h1>
+    <h1>GRADE ADDING</h1>
+    <form action="{% url 'AppOne:student_marks' student.pk %}" method="post">
+        {% csrf_token %}
+    <p>
+        <label for="grade">SELECT GRADE</label>
+        <select name="grade">
+        {% for element in valid_grades %}
+            <option value = "{{element}}"> {{element}}  </option>
+        {% endfor %}
+        </select>
+    </p>  
+    <p>
+        <label for="task">SELECT Task</label>
+        <select name="task">
+        {% for element in tasks %}
+            <option value = "{{element.task_id}}"> {{element.task_name}} - {{element.task_description}} </option>
+        {% endfor %}
+        </select>
+    </p>  
+    <input type="submit" value="ADD GRADE"/>
+    </form>
+
+    <h1>GRADE LIST</h1>
+
+    {% for element in marks %}
+    <a href="{% url 'AppOne:edit_student_marks' element.pk %}">
+    <p><span>Task: </span> {{ element.task.task_name}} &emsp;&emsp; <span>Grade</span> {{ element.mark}}  </p>
+    </a>
+
+    {% endfor %}
+</article>  
+{% endblock %}

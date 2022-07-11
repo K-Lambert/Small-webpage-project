@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pl-PL">
+<head>
+    <title>Registration page</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' type="text/css" href="{% static 'css/registration_style.css' %}">
+    
+</head>
+<body>
+
+<div id="content">
+    <h1>Registration page</h1>
+    <form action="{% url 'AppOne:register' %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Enter your email">
+        </p>
+        <p>
+            <label for="first_name">First name:</label>
+            <input type="text" name="first_name" placeholder="Enter your first name">
+        </p>
+        <p>
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" placeholder="Enter your last name">
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Enter your password">
+        </p>
+        <p>
+            <label for="password">Repeat password:</label>
+            <input type="password" name="repeat_password" placeholder="Repeat your password">
+        </p>
+        <p>
+            <label for="class_id">Class</label>
+            <select name="class_id">
+            {% for element in student_class %}
+            <option value = "{{element.class_id}}"> {{element.full_class_name}}  </option>
+            {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="groups">Type of user:</label>
+            <select name="groups">
+            {% for element in group_model %}
+            <option value = "{{element}}"> {{element}}  </option>
+            {% endfor %}
+            </select>
+        </p>
+            <input type="submit" value="Register">
+            {% if error_value %}
+                <p>{{error_value}}</p>
+            {% endif %}
+    </form>
+</div>
+<div id = "redirect">
+    <a href="{% url 'AppOne:user_login' %}">I'm registered. I want to sign in.</a>
+</div>
+ 
+</body>
+</html>

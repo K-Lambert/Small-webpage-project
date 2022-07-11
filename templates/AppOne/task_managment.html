@@ -1,0 +1,39 @@
+{% extends "AppOne/menu_teacher.html"%}
+
+{% block titlevalue %} 
+    Start Page 
+{% endblock %}
+
+{% block bodyblock %}
+    <article>
+    <h1> Task managment</h1>
+    <form action="{% url 'AppOne:task_managment' %}" method="post">
+        {% csrf_token %}
+    <p>
+        <label for='task_name'> Nazwa zadania </label>
+        <input type="text" name='task_name'>
+    </p>
+    <p>
+        <label for='task_description'> Opis </label>
+        <textarea name='task_description'></textarea>
+    </p>
+    <p>
+        <label for='task_add_date'> Data </label>
+        <input type="date" name='task_add_date'>
+    </p>
+    <input type="submit" value="ADD TASK">
+    </form>
+
+    <p>{{message}}</p><br>
+
+    <h1> ACTUAL TASKS</h1>
+    {% for i in existing_forms %}
+    <h3>Task name: {{i.task_name}}</h3>
+    <p><span>Task description: </span>{{i.task_description}}</p>
+    <p><span>Task date: </span>  {{i.task_add_date}}</p>
+    <p> --------------------------------------------------------------------   </p>
+    <br>
+    {% endfor %}
+    </article>
+
+{% endblock %}

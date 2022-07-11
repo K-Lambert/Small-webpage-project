@@ -1,0 +1,33 @@
+{% extends "AppOne/menu_teacher.html"%}
+
+{% block titlevalue %} 
+    RAPORT Page 
+{% endblock %}
+
+{% block bodyblock %}
+    <article>
+    <h1> Raport</h1>
+
+    {% for element in tasks %}
+        <br>
+        <h3>TASK:  {{element.task_name}}</h3>
+        <p><span>Task description: </span>  {{element.task_description}}</p>
+        {% for key, value in counter.items %}
+            {% if key == element.pk%}
+            <p><span>Number of grades: </span>  {{value}}</p>
+            {% endif %}
+        {% endfor %}
+        {% for key, value in averages_list.items %}
+            {% if key == element.pk%}
+            <p><span>Grades mean: </span>  {{value}}</p>
+            {% endif %}
+        {% endfor %}
+
+
+    {% endfor %}
+    </article>
+    
+
+
+
+{% endblock %}

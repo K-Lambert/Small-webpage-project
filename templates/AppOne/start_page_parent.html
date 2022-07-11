@@ -1,0 +1,16 @@
+{% extends "AppOne/menu_parent.html"%}
+
+{% block titlevalue %} 
+    Start Page 
+{% endblock %}
+
+{% block bodyblock %}
+    <article>
+    <h1> Start Page -  list of students </h1>
+    <h3> Nazwa użytkownika: {{ username}} </h3>
+    <h3> Klasa: {{ extension}} </h3>
+    {% for gr in group %}
+        <h3> Grupa użytkownika: {{ gr }} </h3>
+    {% endfor %}
+    </article>
+{% endblock %}

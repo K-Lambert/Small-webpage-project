@@ -1,0 +1,43 @@
+{% extends "AppOne/menu_parent.html"%}
+
+{% block titlevalue %} 
+    Start Page 
+{% endblock %}
+
+{% block bodyblock %}
+{% if form_mode %}
+<article>
+<form action="{% url 'AppOne:child_managment' %}" method="post">
+    {% csrf_token %}
+</p>
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" placeholder="Enter first name">
+</p>
+<p>
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" placeholder="Enter last name">
+</p>
+<p>
+    <label for="profile_picture">Image:</label>
+    <input type="file" name="profile_picture" accept="image/*">
+</p>
+
+    <input type="submit" name="submit" value="ADD CHILD">
+</form>
+
+<p>{{ message }}</p>
+</article>
+{% else %}
+<article>
+<h3>Data about child</h3>
+<p><span>First name: </span>{{child_model.first_name}}</p>
+<p><span>Last name: </span>{{child_model.last_name}}</p>
+
+<form action="{% url 'AppOne:child_managment' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="DELETE">
+</form>
+</article>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "AppOne/menu_teacher.html"%}
+
+{% block titlevalue %} 
+    Start Page 
+{% endblock %}
+
+{% block bodyblock %}
+    <article>
+    <h1> List of students </h1>
+    {% for student in students %}
+        <a href="{% url 'AppOne:student_marks' student.pk %}">
+            <p><span>Student first name:</span> {{student.first_name}} &emsp;&emsp; <span>Student last name:</span> {{student.last_name}}</p>
+        </a>
+    {% endfor %}
+    </article>
+{% endblock %}

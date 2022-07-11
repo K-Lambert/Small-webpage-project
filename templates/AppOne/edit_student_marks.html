@@ -1,0 +1,40 @@
+{% extends "AppOne/menu_teacher.html"%}
+
+{% block titlevalue %} 
+    Edit student marks
+{% endblock %}
+
+{% block bodyblock %}
+<article>
+    <h1>EDIT GRADE</h1>
+    <form action="{% url 'AppOne:edit_student_marks' grade.pk %}" method="post">
+        {% csrf_token %}
+    <p>
+        <label for="grade">SELECT GRADE</label>
+        <select name="grade">
+        {% for element in valid_grades %}
+            {% if element == grade.mark %}
+            <option value = "{{element}}" selected> {{element}}  </option>
+            {% else %}
+            <option value = "{{element}}"> {{element}}  </option>
+            {% endif %}
+        {% endfor %}
+        </select>
+    </p>  
+    <p>
+        <label for="task">SELECT Task</label>
+        <select name="task">
+        {% for element in tasks %}
+            {% if element.task_id == grade.task.task_id %}
+            <option value = "{{element.task_id}}" selected> {{element.task_name}} - {{element.task_description}} </option>
+            {% else %}
+            <option value = "{{element.task_id}}"> {{element.task_name}} - {{element.task_description}} </option>
+            {% endif %}
+        {% endfor %}
+        </select>
+    </p>  
+    <input type="submit" value="CHANGE GRADE"/>
+    </form>
+
+</article>
+{% endblock %}

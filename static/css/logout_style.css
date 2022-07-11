@@ -1,0 +1,51 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color:white ;
+    font-family: Courier New, monospace;
+}
+
+#content{
+    margin: 0px;
+    padding: 30px;
+    position: fixed;
+    left:50%;
+    top:40%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgb(41, 39, 39);
+    border-radius: 15px;
+    width: 400px;
+}
+
+#logout{
+    position: relative;
+    left:95%;
+    transform: translate(-95%, 0%);
+    background-color: rgb(31, 30, 30);
+    color: lightgray;
+    font-size: 15px;
+    width: 170px;
+    height: 50px;
+    border-inline: 0;
+    border-width: 0;
+    border-radius: 14px;
+    box-shadow: none;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+#logout:hover{
+    background-color: rgb(41, 39, 39) ;
+    color: white;
+}
+
+h1{
+    line-height: 40px;
+    font-weight: 600;
+    text-align: left;
+    font-size: 44px;
+    color:rgb(41, 39, 39);
+    text-decoration: underline rgb(41, 39, 39);
+    text-decoration-thickness: 7px;
+    text-decoration-skip:inherit; 
+}

@@ -1,0 +1,24 @@
+{% extends "AppOne/menu_parent.html"%}
+
+{% block titlevalue %} 
+    Start Page 
+{% endblock %}
+
+{% block bodyblock %}
+<article>
+    <h3>STUDENT</h3>
+    <p><span>First Name: </span> {{student.first_name}}</p>
+    <p><span>Second Name: </span>  {{student.last_name}}</p>
+    <br>
+    <h3>GRADES</h3>
+    {% if grades %}
+        {% for grade in grades %}
+            <p><span>Task Name: </span>{{grade.task.task_name}} || 
+                <span>Task description: </span>{{grade.task.task_description}}  || 
+                <span>Grade: </span>{{grade.mark}} </p>
+        {% endfor %}
+    {% else %}
+        <h3> FOR NOW THERE IS NO GRADES </h3>
+    {% endif %}
+</article>
+{% endblock %}

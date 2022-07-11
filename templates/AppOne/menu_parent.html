@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pl-PL">
+<head>
+    <title>{% block titlevalue %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' type="text/css" href="{% static "/css/menu_style.css" %}"/>
+    <link rel='stylesheet' type="text/css" href="{% static "/css/general_style.css" %}"/>
+    {% block headblock %}
+
+    {% endblock %}
+</head>
+<body>
+    <nav id="nav_menu">
+        <div class="nav_element"><a href="{% url 'AppOne:start_page_parent' %}"> Start page </a></div>
+        <div class="nav_element"><a href="{% url 'AppOne:child_managment' %}"> Manage your child </a></div>
+        <div class="nav_element"><a href="{% url 'AppOne:child_grades' %}"> Child grades </a></div>
+        <div class="nav_element"><a href="{% url 'AppOne:logout_user' %}"> Log out </a></div>
+        <div class="nav_clear"></div>
+    </nav>
+    {% block bodyblock %}
+
+    {% endblock %}
+</body>
+</html>

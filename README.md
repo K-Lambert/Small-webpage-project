@@ -10,7 +10,7 @@ This program is smal simulator of webpage. It was created as student project. It
 ## Technologies
 Project is created with:
 * Python 3.10.5
-* Django==4.0.1
+* Django 4.0.1
 * rest and all technologies can be found in requirements.txt 
 
 ## Setup
